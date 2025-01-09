@@ -11,6 +11,7 @@ public class InstallMechanic : MonoBehaviour
     public Slider installSlider;
     public Slider easeInstallSlider;
     private float lerpSpeed = 0.05f;
+    public HealthBar health;
     [Header("State Colours")]
     [SerializeField] Color idleColour;
     [SerializeField] Color attackColour;
@@ -50,6 +51,17 @@ public class InstallMechanic : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        if (!install && TryGetComponent<Player>(out Player player))
+        {
+            health.TakeDamage(10);
+            Debug.Log("Test");
+        }
+    }
+
+
 
     private void SliderCheck()
     {

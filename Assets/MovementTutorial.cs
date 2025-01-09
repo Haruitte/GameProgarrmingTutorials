@@ -1,7 +1,9 @@
-using UnityEditor;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class MovementTutorial : MonoBehaviour
+
 {
     public float speed = 20f;
     private float horizontalInput;
@@ -39,15 +41,14 @@ public class Player : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
-        cameraForward = CamRotator.forward; //Overwrites the angle offset of the camera
-        cameraForward.y = 0;
-        
+      
+       
+
     }
 
 
     private void ApplyWalking()
     {
-        direction = cameraForward * forwardInput + CamRotator.right * horizontalInput;
         if (horizontalInput != 0 || forwardInput != 0)
         {
             body.velocity = new Vector3(direction.x * speed, body.velocity.y, direction.z * speed);
@@ -62,7 +63,7 @@ public class Player : MonoBehaviour
         {
             body.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
-        
+
     }
 
 
@@ -80,5 +81,5 @@ public class Player : MonoBehaviour
             isOnGround -= 1;
         }
     }
-
 }
+

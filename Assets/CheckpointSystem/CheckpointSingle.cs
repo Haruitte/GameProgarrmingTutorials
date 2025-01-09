@@ -6,6 +6,7 @@ public class CheckpointSingle : MonoBehaviour
 {
 
     private TrackCheckpoints trackCheckpoints;
+    public InstallMechanic install;
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<Player>(out Player player))
@@ -13,6 +14,7 @@ public class CheckpointSingle : MonoBehaviour
             trackCheckpoints.PlayerThroughCheckpoint(this);
         }
     }
+
 
     public void SetTrackCheckpoints(TrackCheckpoints trackCheckpoints)
     {
